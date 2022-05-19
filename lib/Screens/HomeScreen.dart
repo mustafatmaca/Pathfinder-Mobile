@@ -22,16 +22,11 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
-  int _selectedIndex = 2;
+  int _selectedIndex = 0;
   final GlobalKey<CurvedNavigationBarState> _bottomNavigationKey = GlobalKey();
   static final List<Widget> _pages = <Widget>[
-    PlacesPage(),
-    NavigationPage(
-      destinationLatitude: null,
-      destinationLongitude: null,
-      destinationName: '',
-    ),
     HomePage(),
+    PlacesPage(),
     GuidersPage(),
     MessagesPage(),
   ];
@@ -85,9 +80,8 @@ class HomeScreenState extends State<HomeScreen> {
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
           items: const <Widget>[
-            Icon(Icons.location_city_rounded),
-            Icon(Icons.navigation_rounded),
             Icon(Icons.home_rounded),
+            Icon(Icons.location_city_rounded),
             Icon(Icons.person_search_rounded),
             Icon(Icons.messenger_outline_rounded),
           ],

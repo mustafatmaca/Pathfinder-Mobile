@@ -1,8 +1,11 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/User.dart';
 import 'package:pathfinder/Pages/GuidersDetailPage.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class GuidersPage extends StatefulWidget {
   const GuidersPage({Key? key}) : super(key: key);
@@ -18,7 +21,7 @@ class GuidersPageState extends State<GuidersPage> {
   @override
   void initState() {
     super.initState();
-    futureGuider = api.fetchGuider();
+    getGuiders();
   }
 
   @override
@@ -95,5 +98,14 @@ class GuidersPageState extends State<GuidersPage> {
         ),
       ],
     );
+  }
+
+  void getGuiders() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    var user = await api.getUser(prefs.getString('userEmail'));
+    var city = user.city['name'];
+    setState(() {
+      futureGuider = api.fetchGuiderByCity(city);
+    });
   }
 }

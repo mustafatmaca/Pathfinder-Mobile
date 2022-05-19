@@ -49,9 +49,9 @@ class Api {
     }
   }
 
-  Future<List<User>> fetchGuider() async {
+  Future<List<User>> fetchGuiderByCity(String city) async {
     final response = await http.get(Uri.parse(
-        'https://pathfinder-mobile.herokuapp.com/Users/Guiders/guiders'));
+        'https://pathfinder-mobile.herokuapp.com/Users/Guiders/${city}/guider'));
     var data = jsonDecode(response.body);
 
     if (response.statusCode == 200) {
@@ -74,9 +74,9 @@ class Api {
     }
   }
 
-  Future<List<Message>> fetchMessage() async {
-    final response = await http
-        .get(Uri.parse('https://pathfinder-mobile.herokuapp.com/Messages/'));
+  Future<List<Message>> fetchMessageByUser(String mail) async {
+    final response = await http.get(Uri.parse(
+        'https://pathfinder-mobile.herokuapp.com/Messages/?mail=${mail}'));
     var data = jsonDecode(response.body);
 
     if (response.statusCode == 200) {

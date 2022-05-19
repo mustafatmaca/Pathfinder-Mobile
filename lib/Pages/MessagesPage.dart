@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/Message.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class MessagesPage extends StatefulWidget {
   const MessagesPage({Key? key}) : super(key: key);
@@ -17,7 +18,7 @@ class MessagesPageState extends State<MessagesPage> {
   @override
   void initState() {
     super.initState();
-    futureMessage = api.fetchMessage();
+    getMessages();
   }
 
   @override
@@ -88,5 +89,12 @@ class MessagesPageState extends State<MessagesPage> {
         ),
       ],
     );
+  }
+
+  void getMessages() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      futureMessage = api.fetchMessageByUser(prefs.getString('userEmail')!);
+    });
   }
 }

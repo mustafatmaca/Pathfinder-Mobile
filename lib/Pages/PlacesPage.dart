@@ -107,7 +107,6 @@ class PlacesPageState extends State<PlacesPage> {
     if (result != null && result.results != null && mounted) {
       setState(() {
         predictions = result.results!;
-        inspect(predictions[9]);
       });
     }
   }

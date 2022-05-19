@@ -78,7 +78,7 @@ class HomePageState extends State<HomePage> {
           ],
         ),
         const SizedBox(
-          height: 250,
+          height: 12,
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.start,

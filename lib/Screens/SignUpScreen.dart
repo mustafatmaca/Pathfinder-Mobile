@@ -257,7 +257,6 @@ class SignUpScreenState extends State<SignUpScreen> {
     } else {
       form.save();
       City apiCity = await api.fetchCity(cityName);
-      inspect(apiCity);
 
       SharedPreferences prefs = await SharedPreferences.getInstance();
       prefs.setBool('userLogin', true);
@@ -266,7 +265,6 @@ class SignUpScreenState extends State<SignUpScreen> {
       User response =
           await api.createUser(email, name, phone, password, apiCity);
       if (response != null) {
-        inspect(response);
         Navigator.pushAndRemoveUntil(
             context,
             MaterialPageRoute(

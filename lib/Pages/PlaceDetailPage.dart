@@ -32,7 +32,6 @@ class PlaceDetailPageState extends State<PlaceDetailPage> {
   void initState() {
     super.initState();
     getPhoto();
-    inspect(placeId.geometry!.location!.lat);
   }
 
   @override
@@ -217,7 +216,6 @@ class PlaceDetailPageState extends State<PlaceDetailPage> {
     if (firstResult != null && mounted) {
       setState(() {
         images.add(firstResult);
-        inspect(images);
       });
     }
   }
