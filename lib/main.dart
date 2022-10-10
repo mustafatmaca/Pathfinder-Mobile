@@ -1,8 +1,10 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:pathfinder/app/theme/app_light_theme.dart';
+import 'package:pathfinder/app/theme/get_theme.dart';
+import 'package:pathfinder/ui/greetings_screen/view/greetings_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Screens/GreetingsScreen.dart';
 import 'Screens/HomeScreen.dart';
 import 'Screens/LoginScreen.dart';
 
@@ -17,9 +19,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Pathfinder',
-      theme: ThemeData(
-        primarySwatch: Colors.amber,
-      ),
+      theme: getTheme(AppLightTheme()),
       home: const SplashScreen(),
     );
   }
@@ -56,7 +56,7 @@ class SplashScreenState extends State<SplashScreen>
     } else {
       await prefs.setBool('check', true);
       Navigator.of(context).pushReplacement(
-          MaterialPageRoute(builder: (context) => const GreetingsScreen()));
+          MaterialPageRoute(builder: (context) => GreetingsScreen()));
     }
   }
 

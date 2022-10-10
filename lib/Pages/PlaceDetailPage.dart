@@ -1,8 +1,6 @@
-import 'dart:developer';
 import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_place/google_place.dart';
 import 'package:pathfinder/Pages/NavigationPage.dart';
 
@@ -40,10 +38,6 @@ class PlaceDetailPageState extends State<PlaceDetailPage> {
       appBar: AppBar(
         title: Text(
           "${placeId.name}",
-          style: GoogleFonts.ubuntu(
-              color: Colors.amber[800],
-              fontSize: 18,
-              decoration: TextDecoration.none),
         ),
         backgroundColor: Colors.white,
         elevation: 0,
@@ -181,9 +175,6 @@ class PlaceDetailPageState extends State<PlaceDetailPage> {
                       onPrimary: Colors.black87,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(20),
-                      ),
-                      textStyle: GoogleFonts.ubuntu(
-                        fontSize: 16,
                       ),
                       fixedSize: const Size(355, 50)),
                   onPressed: () {

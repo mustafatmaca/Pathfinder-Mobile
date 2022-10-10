@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/User.dart';
 import 'package:pathfinder/Pages/GuidersDetailPage.dart';
+import 'package:pathfinder/app/api/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class GuidersPage extends StatefulWidget {
@@ -36,10 +33,6 @@ class GuidersPageState extends State<GuidersPage> {
           children: [
             Text(
               'Guiders',
-              style: GoogleFonts.ubuntu(
-                  color: Colors.amber[800],
-                  fontSize: 25,
-                  decoration: TextDecoration.none),
             ),
           ],
         ),
@@ -63,17 +56,9 @@ class GuidersPageState extends State<GuidersPage> {
                         tileColor: Colors.black12,
                         title: Text(
                           '${snapshot.data![index].name}',
-                          style: GoogleFonts.ubuntu(
-                              color: Colors.amber[800],
-                              fontSize: 18,
-                              decoration: TextDecoration.none),
                         ),
                         subtitle: Text(
                           'From ${snapshot.data![index].city['name']}',
-                          style: GoogleFonts.ubuntu(
-                              color: Colors.amber[800],
-                              fontSize: 12,
-                              decoration: TextDecoration.none),
                         ),
                         trailing: Icon(
                           Icons.arrow_forward_ios,

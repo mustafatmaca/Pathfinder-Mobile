@@ -1,10 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/City.dart';
 import 'package:pathfinder/Entity/User.dart';
+import 'package:pathfinder/app/api/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'HomeScreen.dart';
@@ -57,10 +54,6 @@ class SignUpScreenState extends State<SignUpScreen> {
                   children: [
                     Text(
                       "Sign Up",
-                      style: GoogleFonts.ubuntu(
-                          color: Colors.amber[800],
-                          fontSize: 32,
-                          decoration: TextDecoration.none),
                     ),
                   ],
                 ),
@@ -228,9 +221,6 @@ class SignUpScreenState extends State<SignUpScreen> {
                                     onPrimary: Colors.black87,
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
-                                    ),
-                                    textStyle: GoogleFonts.ubuntu(
-                                      fontSize: 16,
                                     ),
                                     fixedSize: const Size(355, 50)),
                                 onPressed: createUser,

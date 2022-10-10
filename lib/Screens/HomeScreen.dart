@@ -1,15 +1,10 @@
 // ignore_for_file: prefer_const_constructors
 
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:location/location.dart';
 import 'package:pathfinder/Pages/GuidersPage.dart';
 import 'package:pathfinder/Pages/HomePage.dart';
 import 'package:pathfinder/Pages/MessagesPage.dart';
-import 'package:pathfinder/Pages/NavigationPage.dart';
 import 'package:pathfinder/Pages/PlacesPage.dart';
 import 'package:pathfinder/Screens/LoginScreen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -54,10 +49,6 @@ class HomeScreenState extends State<HomeScreen> {
           ),
           title: Text(
             'Pathfinder',
-            style: GoogleFonts.ubuntu(
-                color: Colors.amber[800],
-                fontSize: 18,
-                decoration: TextDecoration.none),
           ),
           actions: <Widget>[
             Padding(

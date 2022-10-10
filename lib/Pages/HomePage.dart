@@ -1,11 +1,8 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:google_place/google_place.dart';
 import 'package:location/location.dart' as lct;
+import 'package:pathfinder/app/api/api.dart';
 import 'package:pathfinder/config.dart' as config;
-import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/User.dart';
 import 'package:pathfinder/Pages/PlaceDetailPage.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -63,10 +60,6 @@ class HomePageState extends State<HomePage> {
                   children: [
                     Text(
                       'Welcome ${snapshot.data!.name},',
-                      style: GoogleFonts.ubuntu(
-                          color: Colors.amber[800],
-                          fontSize: 25,
-                          decoration: TextDecoration.none),
                     ),
                   ],
                 );
@@ -87,10 +80,6 @@ class HomePageState extends State<HomePage> {
               children: [
                 Text(
                   'Closest Place To You',
-                  style: GoogleFonts.ubuntu(
-                      color: Colors.amber[800],
-                      fontSize: 18,
-                      decoration: TextDecoration.none),
                 ),
               ],
             ),
@@ -119,10 +108,6 @@ class HomePageState extends State<HomePage> {
                                       child: ListTile(
                                         title: Text(
                                           predictions[index].name!,
-                                          style: GoogleFonts.ubuntu(
-                                              color: Colors.amber[800],
-                                              fontSize: 18,
-                                              decoration: TextDecoration.none),
                                         ),
                                       ),
                                     ),

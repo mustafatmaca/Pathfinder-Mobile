@@ -38,16 +38,16 @@ dependencies:
   after_layout: ^1.1.0
   shared_preferences: ^2.0.13
   flutter_spinkit: ^5.1.0
-  google_fonts: 2.2.0
-  flutter_launcher_icons: ^0.9.2
-  font_awesome_flutter: ^9.2.0
+  flutter_launcher_icons: ^0.10.0
+  font_awesome_flutter: ^10.2.1
   http: ^0.13.4
   curved_navigation_bar: ^1.0.3
   google_place: ^0.4.7
   flutter_dotenv: ^5.0.2
-  location: ^4.3.0
   google_maps_flutter: ^2.1.5
   flutter_polyline_points: ^1.0.0
+  location: ^4.4.0
+  get: ^4.6.1
 
 flutter_icons:
   image_path: "assets/logo/hare.png"

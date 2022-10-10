@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 import 'package:pathfinder/Entity/User.dart';
 
 class GuidersDetailPage extends StatelessWidget {
@@ -16,10 +15,6 @@ class GuidersDetailPage extends StatelessWidget {
         elevation: 0,
         title: Text(
           guider.name!,
-          style: GoogleFonts.ubuntu(
-              color: Colors.amber[800],
-              fontSize: 18,
-              decoration: TextDecoration.none),
         ),
         leading: IconButton(
           icon: const Icon(
@@ -46,10 +41,6 @@ class GuidersDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       "Email",
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.amber[800],
-                        fontSize: 20,
-                      ),
                     ),
                   ],
                 ),
@@ -61,9 +52,6 @@ class GuidersDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       guider.mail!,
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 14,
-                      ),
                     ),
                   ],
                 ),
@@ -75,10 +63,6 @@ class GuidersDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       "GSM",
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.amber[800],
-                        fontSize: 20,
-                      ),
                     ),
                   ],
                 ),
@@ -90,9 +74,6 @@ class GuidersDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       guider.gsm!,
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 14,
-                      ),
                     ),
                   ],
                 ),
@@ -104,10 +85,6 @@ class GuidersDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       "City",
-                      style: GoogleFonts.ubuntu(
-                        color: Colors.amber[800],
-                        fontSize: 20,
-                      ),
                     ),
                   ],
                 ),
@@ -119,9 +96,6 @@ class GuidersDetailPage extends StatelessWidget {
                   children: [
                     Text(
                       guider.city['name'],
-                      style: GoogleFonts.ubuntu(
-                        fontSize: 14,
-                      ),
                     ),
                   ],
                 ),
@@ -137,9 +111,6 @@ class GuidersDetailPage extends StatelessWidget {
                   onPrimary: Colors.black87,
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(20),
-                  ),
-                  textStyle: GoogleFonts.ubuntu(
-                    fontSize: 16,
                   ),
                   fixedSize: const Size(355, 50)),
               onPressed: () {},

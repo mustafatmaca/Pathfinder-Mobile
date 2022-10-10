@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/User.dart';
+import 'package:pathfinder/app/api/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'HomeScreen.dart';
 import 'SignUpScreen.dart';
@@ -60,10 +58,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       'Pathfinder',
-                      style: GoogleFonts.ubuntu(
-                          color: Colors.amber[800],
-                          fontSize: 20,
-                          decoration: TextDecoration.none),
                     ),
                   ],
                 ),
@@ -75,10 +69,6 @@ class _LoginScreenState extends State<LoginScreen> {
                   children: [
                     Text(
                       "Hi!",
-                      style: GoogleFonts.ubuntu(
-                          color: Colors.amber[800],
-                          fontSize: 32,
-                          decoration: TextDecoration.none),
                     ),
                   ],
                 ),
@@ -161,9 +151,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                     shape: RoundedRectangleBorder(
                                       borderRadius: BorderRadius.circular(20),
                                     ),
-                                    textStyle: GoogleFonts.ubuntu(
-                                      fontSize: 16,
-                                    ),
                                     fixedSize: const Size(355, 50)),
                                 onPressed: checkLogin,
                               ),
@@ -176,10 +163,6 @@ class _LoginScreenState extends State<LoginScreen> {
                               children: [
                                 Text(
                                   "Don't have an account?",
-                                  style: GoogleFonts.ubuntu(
-                                      color: Colors.black54,
-                                      fontSize: 16,
-                                      decoration: TextDecoration.none),
                                 ),
                                 InkWell(
                                   onTap: () {
@@ -191,10 +174,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                   },
                                   child: Text(
                                     " Sign Up",
-                                    style: GoogleFonts.ubuntu(
-                                        color: Colors.amber[800],
-                                        fontSize: 16,
-                                        decoration: TextDecoration.none),
                                   ),
                                 )
                               ],
@@ -208,10 +187,6 @@ class _LoginScreenState extends State<LoginScreen> {
                                 InkWell(
                                   child: Text(
                                     "Forgot your password?",
-                                    style: GoogleFonts.ubuntu(
-                                        color: Colors.amber[800],
-                                        fontSize: 16,
-                                        decoration: TextDecoration.none),
                                   ),
                                 )
                               ],

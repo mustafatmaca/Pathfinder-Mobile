@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'package:pathfinder/API/api.dart';
 import 'package:pathfinder/Entity/Message.dart';
+import 'package:pathfinder/app/api/api.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class MessagesPage extends StatefulWidget {
@@ -33,10 +32,6 @@ class MessagesPageState extends State<MessagesPage> {
           children: [
             Text(
               'Messages',
-              style: GoogleFonts.ubuntu(
-                  color: Colors.amber[800],
-                  fontSize: 25,
-                  decoration: TextDecoration.none),
             ),
           ],
         ),
@@ -60,17 +55,9 @@ class MessagesPageState extends State<MessagesPage> {
                         tileColor: Colors.black12,
                         title: Text(
                           '${snapshot.data![index].sender['name']}',
-                          style: GoogleFonts.ubuntu(
-                              color: Colors.amber[800],
-                              fontSize: 18,
-                              decoration: TextDecoration.none),
                         ),
                         subtitle: Text(
                           '${snapshot.data![index].context}',
-                          style: GoogleFonts.ubuntu(
-                              color: Colors.amber[800],
-                              fontSize: 12,
-                              decoration: TextDecoration.none),
                         ),
                         trailing: Icon(
                           Icons.message,
