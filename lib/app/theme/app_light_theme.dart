@@ -23,12 +23,12 @@ class AppLightTheme implements AppTheme {
   @override
   Color dividerColor = AppColors.button;
   @override
-  IconThemeData iconTheme = const IconThemeData(color: AppColors.button);
+  IconThemeData iconTheme =
+      const IconThemeData(color: AppColors.darkBackground);
 
   @override
   AppBarTheme appBarTheme = const AppBarTheme(
-    color: AppColors.button,
-    centerTitle: true,
+    color: AppColors.lightBackground,
   );
 
   @override
@@ -69,9 +69,13 @@ class AppLightTheme implements AppTheme {
         color: AppColors.lightText,
       ),
       bodyText1: TextStyle(
-          fontSize: 14,
+          fontSize: 16,
           fontWeight: FontWeight.w400,
-          color: AppColors.lightText));
+          color: AppColors.lightText),
+      bodyText2: TextStyle(
+          fontSize: 16,
+          fontWeight: FontWeight.w400,
+          color: AppColors.hintText));
 
   @override
   BottomNavigationBarThemeData bottomNavigationBarThemeData =

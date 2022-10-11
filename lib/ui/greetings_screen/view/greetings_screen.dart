@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:pathfinder/app/theme/app_colors.dart';
 import 'package:pathfinder/app/theme/app_light_theme.dart';
 import 'package:pathfinder/ui/greetings_screen/controller/greetings_controller.dart';
+import 'package:pathfinder/ui/login_screen/view/login_screen.dart';
 
 class GreetingsScreen extends StatelessWidget {
   final greetingsController = Get.put(GreetingsController());
@@ -116,7 +117,9 @@ to explore World? """,
                               MediaQuery.of(context).size.width * 0.9,
                               MediaQuery.of(context).size.height * 0.08),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Get.to(LoginScreen());
+                        },
                       ),
                     ],
                   ),

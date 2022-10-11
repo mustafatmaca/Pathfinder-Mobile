@@ -1,12 +1,13 @@
 import 'package:after_layout/after_layout.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
+import 'package:get/get.dart';
 import 'package:pathfinder/app/theme/app_light_theme.dart';
 import 'package:pathfinder/app/theme/get_theme.dart';
 import 'package:pathfinder/ui/greetings_screen/view/greetings_screen.dart';
+import 'package:pathfinder/ui/login_screen/view/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'Screens/HomeScreen.dart';
-import 'Screens/LoginScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +18,7 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       title: 'Pathfinder',
       theme: getTheme(AppLightTheme()),
       home: const SplashScreen(),
@@ -51,7 +52,7 @@ class SplashScreenState extends State<SplashScreen>
             ModalRoute.withName('Home'));
       } else {
         Navigator.of(context).pushReplacement(
-            MaterialPageRoute(builder: (context) => const LoginScreen()));
+            MaterialPageRoute(builder: (context) => LoginScreen()));
       }
     } else {
       await prefs.setBool('check', true);

@@ -6,7 +6,9 @@ import 'package:pathfinder/Pages/GuidersPage.dart';
 import 'package:pathfinder/Pages/HomePage.dart';
 import 'package:pathfinder/Pages/MessagesPage.dart';
 import 'package:pathfinder/Pages/PlacesPage.dart';
-import 'package:pathfinder/Screens/LoginScreen.dart';
+import 'package:pathfinder/app/theme/app_colors.dart';
+import 'package:pathfinder/app/theme/app_light_theme.dart';
+import 'package:pathfinder/ui/login_screen/view/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -35,20 +37,16 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Colors.white,
         appBar: AppBar(
-          backgroundColor: Colors.white,
           elevation: 0,
-          leading: Padding(
-            padding: const EdgeInsets.only(left: 8.0),
-            child: Image.asset(
-              'assets/logo/hare-outlined.png',
-              width: 20,
-              height: 20,
-            ),
-          ),
-          title: Text(
-            'Pathfinder',
+          automaticallyImplyLeading: false,
+          title: Row(
+            children: [
+              Text(
+                'Pathfinder',
+                style: AppLightTheme().textTheme.subtitle1,
+              ),
+            ],
           ),
           actions: <Widget>[
             Padding(
@@ -78,9 +76,9 @@ class HomeScreenState extends State<HomeScreen> {
           ],
           index: _selectedIndex,
           height: 60,
-          color: Colors.amber[800]!,
-          buttonBackgroundColor: Colors.amber[800],
-          backgroundColor: Colors.white,
+          color: AppColors.button,
+          buttonBackgroundColor: AppColors.button,
+          backgroundColor: AppColors.lightBackground,
           animationCurve: Curves.easeInOut,
           animationDuration: const Duration(milliseconds: 400),
           onTap: _onItemTapped,
@@ -93,8 +91,7 @@ class HomeScreenState extends State<HomeScreen> {
     prefs.setString('userEmail', "");
     Navigator.pushAndRemoveUntil(
         context,
-        MaterialPageRoute(
-            builder: (BuildContext context) => const LoginScreen()),
+        MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
         ModalRoute.withName('Login'));
   }
 }
