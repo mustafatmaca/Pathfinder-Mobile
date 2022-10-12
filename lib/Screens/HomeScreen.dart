@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
+import 'package:get/get.dart';
 import 'package:pathfinder/Pages/GuidersPage.dart';
 import 'package:pathfinder/Pages/HomePage.dart';
 import 'package:pathfinder/Pages/MessagesPage.dart';
@@ -37,34 +38,11 @@ class HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          elevation: 0,
-          automaticallyImplyLeading: false,
-          title: Row(
-            children: [
-              Text(
-                'Pathfinder',
-                style: AppLightTheme().textTheme.subtitle1,
-              ),
-            ],
+        appBar: buildAppBar(),
+        body: Obx(
+          () => Center(
+            child: _pages.elementAt(_selectedIndex),
           ),
-          actions: <Widget>[
-            Padding(
-                padding: EdgeInsets.only(right: 20.0),
-                child: GestureDetector(
-                  onTap: () {
-                    logout();
-                  },
-                  child: Icon(
-                    Icons.logout_rounded,
-                    color: Colors.amber[800],
-                    size: 26.0,
-                  ),
-                ))
-          ],
-        ),
-        body: Center(
-          child: _pages.elementAt(_selectedIndex),
         ),
         bottomNavigationBar: CurvedNavigationBar(
           key: _bottomNavigationKey,
@@ -93,5 +71,34 @@ class HomeScreenState extends State<HomeScreen> {
         context,
         MaterialPageRoute(builder: (BuildContext context) => LoginScreen()),
         ModalRoute.withName('Login'));
+  }
+
+  buildAppBar() {
+    return AppBar(
+      elevation: 0,
+      automaticallyImplyLeading: false,
+      title: Row(
+        children: [
+          Text(
+            'Pathfinder',
+            style: AppLightTheme().textTheme.subtitle1,
+          ),
+        ],
+      ),
+      actions: <Widget>[
+        Padding(
+            padding: EdgeInsets.only(right: 20.0),
+            child: GestureDetector(
+              onTap: () {
+                logout();
+              },
+              child: Icon(
+                Icons.logout_rounded,
+                color: Colors.amber[800],
+                size: 26.0,
+              ),
+            ))
+      ],
+    );
   }
 }

@@ -4,10 +4,10 @@ import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:get/get.dart';
 import 'package:pathfinder/app/theme/app_light_theme.dart';
 import 'package:pathfinder/app/theme/get_theme.dart';
+import 'package:pathfinder/ui/base_screen/view/base_screen.dart';
 import 'package:pathfinder/ui/greetings_screen/view/greetings_screen.dart';
 import 'package:pathfinder/ui/login_screen/view/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'Screens/HomeScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -47,8 +47,7 @@ class SplashScreenState extends State<SplashScreen>
       if (userLogin) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => const HomeScreen()),
+            MaterialPageRoute(builder: (BuildContext context) => BaseScreen()),
             ModalRoute.withName('Home'));
       } else {
         Navigator.of(context).pushReplacement(

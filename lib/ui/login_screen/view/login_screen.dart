@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pathfinder/Entity/User.dart';
-import 'package:pathfinder/Screens/HomeScreen.dart';
 import 'package:pathfinder/app/api/api.dart';
 import 'package:pathfinder/app/theme/app_colors.dart';
 import 'package:pathfinder/app/theme/app_light_theme.dart';
 import 'package:pathfinder/core/helper/regex_helper.dart';
+import 'package:pathfinder/ui/base_screen/view/base_screen.dart';
 import 'package:pathfinder/ui/login_screen/controller/login_controller.dart';
 import 'package:pathfinder/ui/sign_up_screen/view/sign_up_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -15,6 +15,7 @@ class LoginScreen extends StatelessWidget {
   final regexHelper = RegexHelper();
   final api = Api();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  FormState? formState;
 
   LoginScreen({Key? key}) : super(key: key);
 
@@ -74,6 +75,7 @@ class LoginScreen extends StatelessWidget {
                       children: [
                         TextFormField(
                           key: Key("username"),
+                          style: AppLightTheme().textTheme.bodyText2,
                           onSaved: (value) {
                             loginController.username = value;
                           },
@@ -95,6 +97,7 @@ class LoginScreen extends StatelessWidget {
                         ),
                         TextFormField(
                           key: Key("password"),
+                          style: AppLightTheme().textTheme.bodyText2,
                           onSaved: (value) {
                             loginController.password = value;
                           },
@@ -228,17 +231,19 @@ class LoginScreen extends StatelessWidget {
   }
 
   Future<void> checkLogin() async {
-    final FormState? form = formKey.currentState;
-    if (!form!.validate()) {
+    formState = formKey.currentState;
+    if (!formState!.validate()) {
       const SnackBar(content: Text('Please fix the errors.'));
     } else {
-      form.save();
+      formState!.save();
+      SharedPreferences prefs = await SharedPreferences.getInstance();
       Future<User> futureUser =
           api.checkLogin(loginController.username, loginController.password);
-      SharedPreferences prefs = await SharedPreferences.getInstance();
+      futureUser.then((value) => value.id == null
+          ? const SnackBar(content: Text("Wrong User"))
+          : Get.to(() => BaseScreen()));
+      prefs.setString('userEmail', loginController.username!);
       prefs.setBool('userLogin', true);
-      futureUser.then((value) => prefs.setString('userEmail', value.mail!));
-      futureUser.then((value) => Get.to(() => HomeScreen()));
     }
   }
 }

@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:pathfinder/Entity/City.dart';
 import 'package:pathfinder/Entity/User.dart';
 import 'package:pathfinder/app/api/api.dart';
+import 'package:pathfinder/ui/base_screen/view/base_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
-import 'HomeScreen.dart';
 
 class SignUpScreen extends StatefulWidget {
   const SignUpScreen({Key? key}) : super(key: key);
@@ -257,8 +256,7 @@ class SignUpScreenState extends State<SignUpScreen> {
       if (response != null) {
         Navigator.pushAndRemoveUntil(
             context,
-            MaterialPageRoute(
-                builder: (BuildContext context) => const HomeScreen()),
+            MaterialPageRoute(builder: (BuildContext context) => BaseScreen()),
             ModalRoute.withName('Home'));
       }
     }

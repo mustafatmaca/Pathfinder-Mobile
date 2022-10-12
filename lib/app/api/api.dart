@@ -1,6 +1,7 @@
 // ignore_for_file: camel_case_types
 
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:http/http.dart' as http;
 import 'package:pathfinder/Entity/City.dart';
@@ -98,9 +99,9 @@ class Api {
   Future<User> checkLogin(String? mail, String? password) async {
     final response = await http.get(Uri.parse(
         'https://pathfinder-mobile.herokuapp.com/Users/$mail/$password'));
-    var data = jsonDecode(response.body);
 
-    if (response.statusCode == 200) {
+    if (response.body != "") {
+      var data = jsonDecode(response.body);
       User user = User(
           id: data["id"],
           mail: data["mail"],
@@ -110,9 +111,18 @@ class Api {
           role: data["role"],
           city: data["city"],
           messages: data["messages"]);
+      inspect(user);
       return user;
     } else {
-      throw Exception('Failed');
+      return const User(
+          id: null,
+          mail: null,
+          password: null,
+          name: null,
+          gsm: null,
+          role: null,
+          city: null,
+          messages: null);
     }
   }
 

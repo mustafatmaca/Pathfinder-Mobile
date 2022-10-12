@@ -1,10 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:pathfinder/Entity/City.dart';
+import 'package:pathfinder/Entity/User.dart';
 import 'package:pathfinder/app/theme/app_colors.dart';
 import 'package:pathfinder/app/theme/app_light_theme.dart';
 import 'package:pathfinder/core/helper/regex_helper.dart';
+import 'package:pathfinder/core/helper/request_helper.dart';
 import 'package:pathfinder/ui/login_screen/view/login_screen.dart';
 import 'package:pathfinder/ui/sign_up_screen/controller/sign_up_controller.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class SignUpScreen extends StatelessWidget {
   final signUpController = Get.put(SignUpController());
@@ -59,6 +63,7 @@ class SignUpScreen extends StatelessWidget {
                       children: [
                         TextFormField(
                           key: Key("email"),
+                          style: AppLightTheme().textTheme.bodyText2,
                           onSaved: (value) {
                             signUpController.email = value;
                           },
@@ -80,6 +85,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         TextFormField(
                           key: Key("name"),
+                          style: AppLightTheme().textTheme.bodyText2,
                           onSaved: (value) {
                             signUpController.name = value;
                           },
@@ -101,6 +107,7 @@ class SignUpScreen extends StatelessWidget {
                         ),
                         TextFormField(
                           key: Key("phone"),
+                          style: AppLightTheme().textTheme.bodyText2,
                           onSaved: (value) {
                             signUpController.phone = value;
                           },
@@ -120,53 +127,60 @@ class SignUpScreen extends StatelessWidget {
                         const SizedBox(
                           height: 25,
                         ),
-                        FutureBuilder<List<String>>(
-                          future: signUpController.futureCity.value,
-                          builder: (context, snapshot) {
-                            if (snapshot.hasData) {
-                              return DropdownButtonFormField(
-                                key: Key("city"),
-                                value: "Choose",
-                                onChanged: (value) {},
-                                validator: (String? city) {
-                                  regexHelper.checkCity(city);
-                                },
-                                decoration: InputDecoration(
-                                  filled: true,
-                                  fillColor: AppColors.whiteBacground,
-                                  border: OutlineInputBorder(
-                                      borderRadius: BorderRadius.circular(20),
-                                      borderSide: const BorderSide(
-                                          width: 1.0,
-                                          color: Color(0xFFFFC107))),
-                                ),
-                                icon: const Icon(Icons.arrow_downward_outlined),
-                                items: snapshot.data!
-                                    .map<DropdownMenuItem<String>>(
-                                        (String value) {
-                                  return DropdownMenuItem(
-                                    value: value,
-                                    child: Text(
-                                      value,
-                                      style:
-                                          AppLightTheme().textTheme.bodyText2,
-                                    ),
-                                  );
-                                }).toList(),
-                              );
-                            } else if (snapshot.hasError) {
-                              return Text('${snapshot.error}');
-                            }
+                        Obx(
+                          () => FutureBuilder<List<String>>(
+                            future: signUpController.futureCity.value,
+                            builder: (context, snapshot) {
+                              if (snapshot.hasData) {
+                                return DropdownButtonFormField(
+                                  key: Key("city"),
+                                  value: signUpController.selectedItem.value,
+                                  onChanged: (value) {
+                                    signUpController.selectedItem.value =
+                                        value.toString();
+                                  },
+                                  validator: (String? city) {
+                                    regexHelper.checkCity(city);
+                                  },
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: AppColors.whiteBacground,
+                                    border: OutlineInputBorder(
+                                        borderRadius: BorderRadius.circular(20),
+                                        borderSide: const BorderSide(
+                                            width: 1.0,
+                                            color: Color(0xFFFFC107))),
+                                  ),
+                                  icon:
+                                      const Icon(Icons.arrow_downward_outlined),
+                                  items: snapshot.data!
+                                      .map<DropdownMenuItem<String>>(
+                                          (String value) {
+                                    return DropdownMenuItem(
+                                      value: value,
+                                      child: Text(
+                                        value,
+                                        style:
+                                            AppLightTheme().textTheme.bodyText2,
+                                      ),
+                                    );
+                                  }).toList(),
+                                );
+                              } else if (snapshot.hasError) {
+                                return Text('${snapshot.error}');
+                              }
 
-                            // By default, show a loading spinner.
-                            return const CircularProgressIndicator();
-                          },
+                              // By default, show a loading spinner.
+                              return const CircularProgressIndicator();
+                            },
+                          ),
                         ),
                         const SizedBox(
                           height: 25,
                         ),
                         TextFormField(
                           key: Key("password"),
+                          style: AppLightTheme().textTheme.bodyText2,
                           onSaved: (value) {
                             signUpController.phone = value;
                           },
